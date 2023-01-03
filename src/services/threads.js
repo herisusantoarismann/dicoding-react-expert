@@ -1,23 +1,25 @@
+const baseURL = 'https://forum-api.dicoding.dev/v1';
+
 const getThreads = () => {
-  return fetch(`${process.env.REACT_APP_API}/threads`);
+  return fetch(`${baseURL}/threads`);
 };
 
 const getDetailThread = (id) => {
-  return fetch(`${process.env.REACT_APP_API}/threads/${id}`);
+  return fetch(`${baseURL}/threads/${id}`);
 };
 
 const getUsers = () => {
-  return fetch(`${process.env.REACT_APP_API}/users`);
+  return fetch(`${baseURL}/users`);
 };
 
 const getLeaderboards = () => {
-  return fetch(`${process.env.REACT_APP_API}/leaderboards`);
+  return fetch(`${baseURL}/leaderboards`);
 };
 
 const createThread = (data) => {
   const token = JSON.parse(localStorage.getItem('dicoding'));
 
-  return fetch(`${process.env.REACT_APP_API}/threads`, {
+  return fetch(`${baseURL}/threads`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +32,7 @@ const createThread = (data) => {
 const handleUpVotes = (id) => {
   const token = JSON.parse(localStorage.getItem('dicoding'));
 
-  return fetch(`${process.env.REACT_APP_API}/threads/${id}/up-vote`, {
+  return fetch(`${baseURL}/threads/${id}/up-vote`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -41,7 +43,7 @@ const handleUpVotes = (id) => {
 const handleDownVotes = (id) => {
   const token = JSON.parse(localStorage.getItem('dicoding'));
 
-  return fetch(`${process.env.REACT_APP_API}/threads/${id}/down-vote`, {
+  return fetch(`${baseURL}/threads/${id}/down-vote`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -52,7 +54,7 @@ const handleDownVotes = (id) => {
 const handleNeutralVotes = (id) => {
   const token = JSON.parse(localStorage.getItem('dicoding'));
 
-  return fetch(`${process.env.REACT_APP_API}/threads/${id}/neutral-vote`, {
+  return fetch(`${baseURL}/threads/${id}/neutral-vote`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -63,7 +65,7 @@ const handleNeutralVotes = (id) => {
 const createComment = ({ id, data }) => {
   const token = JSON.parse(localStorage.getItem('dicoding'));
 
-  return fetch(`${process.env.REACT_APP_API}/threads/${id}/comments`, {
+  return fetch(`${baseURL}/threads/${id}/comments`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -78,22 +80,19 @@ const handleUpComment = ({ threadId, commentId }) => {
 
   console.log(threadId);
 
-  return fetch(
-    `${process.env.REACT_APP_API}/threads/${threadId}/comments/${commentId}/up-vote`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  return fetch(`${baseURL}/threads/${threadId}/comments/${commentId}/up-vote`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
 
 const handleDownComment = ({ threadId, commentId }) => {
   const token = JSON.parse(localStorage.getItem('dicoding'));
 
   return fetch(
-    `${process.env.REACT_APP_API}/threads/${threadId}/comments/${commentId}/down-vote`,
+    `${baseURL}/threads/${threadId}/comments/${commentId}/down-vote`,
     {
       method: 'POST',
       headers: {
@@ -107,7 +106,7 @@ const handleNeutralComment = ({ threadId, commentId }) => {
   const token = JSON.parse(localStorage.getItem('dicoding'));
 
   return fetch(
-    `${process.env.REACT_APP_API}/threads/${threadId}/comments/${commentId}/neutral-vote`,
+    `${baseURL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
     {
       method: 'POST',
       headers: {

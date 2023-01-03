@@ -1,5 +1,7 @@
+const baseURL = 'https://forum-api.dicoding.dev/v1';
+
 const login = (data) => {
-  return fetch(`${process.env.REACT_APP_API}/login`, {
+  return fetch(`${baseURL}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -9,7 +11,7 @@ const login = (data) => {
 };
 
 const register = (data) => {
-  return fetch(`${process.env.REACT_APP_API}/register`, {
+  return fetch(`${baseURL}/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -19,7 +21,7 @@ const register = (data) => {
 };
 
 const getUser = (token) => {
-  return fetch(`${process.env.REACT_APP_API}/users/me`, {
+  return fetch(`${baseURL}/users/me`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

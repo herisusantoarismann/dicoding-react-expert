@@ -26,6 +26,8 @@ import threadReducer, {
   getLeaderboards,
 } from './threadsSlice';
 
+const baseURL = 'https://forum-api.dicoding.dev/v1';
+
 describe('threads reducer', () => {
   const state = {
     isLoading: false,
@@ -169,7 +171,7 @@ describe('thunk', () => {
     await store.dispatch(getThreads());
 
     // assert
-    expect(postSpy).toBeCalledWith(`${process.env.REACT_APP_API}/threads`);
+    expect(postSpy).toBeCalledWith(`${baseURL}/threads`);
   });
 
   it('getDetailThreads', async () => {
@@ -181,7 +183,7 @@ describe('thunk', () => {
 
     // assert
     expect(postSpy).toBeCalledWith(
-      `${process.env.REACT_APP_API}/threads/thread-B3N9KGa87vfMHyBQ`
+      `${baseURL}/threads/thread-B3N9KGa87vfMHyBQ`
     );
   });
 
@@ -193,7 +195,7 @@ describe('thunk', () => {
     await store.dispatch(getUsers());
 
     // assert
-    expect(postSpy).toBeCalledWith(`${process.env.REACT_APP_API}/users`);
+    expect(postSpy).toBeCalledWith(`${baseURL}/users`);
   });
 
   it('getLeaderboards', async () => {
@@ -204,6 +206,6 @@ describe('thunk', () => {
     await store.dispatch(getLeaderboards());
 
     // assert
-    expect(postSpy).toBeCalledWith(`${process.env.REACT_APP_API}/leaderboards`);
+    expect(postSpy).toBeCalledWith(`${baseURL}/leaderboards`);
   });
 });

@@ -15,6 +15,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer, { login, logout, register } from './authSlice';
 
+const baseURL = 'https://forum-api.dicoding.dev/v1';
+
 describe('auth reducer', () => {
   const state = {
     isLoggedIn: false,
@@ -61,7 +63,7 @@ describe('auth thunk', () => {
     await store.dispatch(login(data));
 
     // assert
-    expect(postSpy).toBeCalledWith(`${process.env.REACT_APP_API}/login`, {
+    expect(postSpy).toBeCalledWith(`${baseURL}/login`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -79,7 +81,7 @@ describe('auth thunk', () => {
     await store.dispatch(register(data));
 
     // assert
-    expect(postSpy).toBeCalledWith(`${process.env.REACT_APP_API}/register`, {
+    expect(postSpy).toBeCalledWith(`${baseURL}/register`, {
       headers: {
         'Content-Type': 'application/json',
       },
