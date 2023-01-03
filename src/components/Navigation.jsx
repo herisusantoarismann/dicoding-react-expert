@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/auth/authSlice';
 
 const Navigation = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const Navigation = () => {
           <MdLeaderboard />
           <p>Leaderboards</p>
         </div>
-        {user ? (
+        {isLoggedIn ? (
           <div
             className="flex flex-col items-center cursor-pointer"
             onClick={() => {
