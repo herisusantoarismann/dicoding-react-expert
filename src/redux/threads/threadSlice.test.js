@@ -206,6 +206,6 @@ describe('thunk', () => {
     await store.dispatch(getLeaderboards());
 
     // assert
-    expect(postSpy).toBeCalledWith(`${baseURL}/leaderboards`);
+    expect(postSpy).toBeCalledWith(`${baseURL}/leaderboard`);
   });
 });
