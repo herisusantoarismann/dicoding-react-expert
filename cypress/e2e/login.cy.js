@@ -77,6 +77,6 @@ describe('Login spec', () => {
     cy.get('h2[id="kategori-popular"]')
       .contains('Kategori Popular')
       .should('be.visible');
-    cy.get('p[id="logout"]').contains('Logout').should('be.visible');
+    cy.get('p[id="logout"]').contains('logout').should('be.visible');
   });
 });
