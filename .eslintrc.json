@@ -13,5 +13,10 @@
     "sourceType": "module"
   },
   "plugins": ["react", "react-hooks", "cypress"],
-  "rules": {}
+  "rules": {},
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
